@@ -1,0 +1,21 @@
+#!/usr/bin/env groovy
+
+pipeline {
+    agent any
+    stages {
+        stage('MySQL Docker Image') {
+            steps {
+                sh """pwd
+                sleep 10s
+                """
+            }
+        }
+		stage('Drupal Docker Image') {
+            steps {
+                sh """pwd
+                sleep 10s
+                """
+            }
+        }
+    }
+}
