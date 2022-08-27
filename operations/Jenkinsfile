@@ -14,7 +14,7 @@ pipeline {
         stage('Copy to remote server') {
             steps {
                 sh """pwd
-                sshpass -p "Teradata@123" scp drupal.zip ubuntu@34.216.214.225:/tmp
+                sshpass -p "Teradata@123" -o StrictHostKeyChecking=no scp drupal.zip ubuntu@34.216.214.225:/tmp
                 """
             }
         }
