@@ -3,10 +3,11 @@
 pipeline {
     agent any
     stages {
-        stage('MySQL Docker Image') {
+        stage('Configure Directories') {
             steps {
                 sh """pwd
-                sleep 5s
+                ls -lart
+                
                 """
             }
         }
