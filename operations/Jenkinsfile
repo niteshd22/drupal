@@ -6,11 +6,11 @@ pipeline {
         stage('MySQL Docker Image') {
             steps {
                 sh """pwd
-                sleep 20s
+                sleep 5s
                 """
             }
         }
-		stage('Drupal Docker Image') {
+        stage('Drupal Docker Image') {
             steps {
                 sh """pwd
                 sleep 5s
