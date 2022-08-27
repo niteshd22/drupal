@@ -11,10 +11,10 @@ pipeline {
                 """
             }
         }
-        stage('Drupal Docker Image') {
+        stage('Copy to remote server') {
             steps {
                 sh """pwd
-                sleep 5s
+                sshpass -p "Teradata@123" scp drupal.zip ubuntu@34.216.214.225:/tmp
                 """
             }
         }
