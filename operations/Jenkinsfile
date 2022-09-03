@@ -5,16 +5,18 @@ pipeline {
     stages {
         stage('Configure Directories') {
             steps {
-                sh """pwd
-                // rm -rf drupal.zip
-                // ls -lart
-                // zip -r drupal.zip . -x '*.git*' -q
+                sh """
+                pwd
+                #rm -rf drupal.zip
+                #ls -lart
+                #zip -r drupal.zip . -x '*.git*' -q
                 """
             }
         }
         stage('Copy to remote server') {
             steps {
-                sh """pwd
+                sh """
+                pwd
                 #scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /var/lib/jenkins/.ssh/common-key-mumbai.pem drupal.zip ubuntu@13.234.148.202:/tmp
                 #ls -lart /tmp
                 #ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /var/lib/jenkins/.ssh/common-key-mumbai.pem -t ubuntu@13.234.148.202 sudo sh /tmp/extract.sh
