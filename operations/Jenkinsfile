@@ -14,7 +14,7 @@ pipeline {
         stage('Copy to remote server') {
             steps {
                 sh """pwd
-                scp -i /root/.ssh/common-key-mumbai.pem drupal.zip ubuntu@13.234.148.202:/tmp
+                scp -i /var/lib/jenkins/.ssh/common-key-mumbai.pem drupal.zip ubuntu@13.234.148.202:/tmp
                 """
             }
         }
