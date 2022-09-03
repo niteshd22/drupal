@@ -3,9 +3,10 @@
 pipeline {
     agent any
     stages {
-        stage('Updated Staging Instance') {
+        stage('Updated Instance') {
             steps {
                 sh """pwd
+                echo " The environment is ${params.Env}"
                 ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /var/lib/jenkins/.ssh/common-key-mumbai.pem -t ubuntu@13.234.148.202 sudo sh /tmp/extract.sh
                 """
             }
