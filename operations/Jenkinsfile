@@ -17,8 +17,8 @@ pipeline {
                 sh """pwd
                 scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /var/lib/jenkins/.ssh/common-key-mumbai.pem drupal.zip ubuntu@13.234.148.202:/tmp
                 ls -lart /tmp
-                #echo A | unzip /tmp/drupal.zip -d /drupal/_data/
-                #rm /tmp/drupal.zip
+                ssh -i .ssh/common-key-mumbai.pem -t ubuntu@13.234.148.202 sudo sh /tmp/extract.sh
+                rm /tmp/drupal.zip
                 """
             }
         }
