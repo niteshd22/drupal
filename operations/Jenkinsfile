@@ -5,12 +5,11 @@ pipeline {
     stages {
         stage('Configure Directories') {
             steps {
-                sh """
-                // pwd
+                sh """pwd
                 // rm -rf drupal.zip
                 // ls -lart
                 // zip -r drupal.zip . -x '*.git*' -q
-                git pull
+                sudo git pull
                 """
             }
         }
