@@ -9,19 +9,18 @@ pipeline {
                 // rm -rf drupal.zip
                 // ls -lart
                 // zip -r drupal.zip . -x '*.git*' -q
-                sudo git pull
                 """
             }
         }
-        // stage('Copy to remote server') {
-        //     steps {
-        //         sh """pwd
-        //         scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /var/lib/jenkins/.ssh/common-key-mumbai.pem drupal.zip ubuntu@13.234.148.202:/tmp
-        //         ls -lart /tmp
-        //         ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /var/lib/jenkins/.ssh/common-key-mumbai.pem -t ubuntu@13.234.148.202 sudo sh /tmp/extract.sh
-        //         ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /var/lib/jenkins/.ssh/common-key-mumbai.pem -t ubuntu@13.234.148.202 sudo rm /tmp/drupal.zip
-        //         """
-        //     }
-        // }
+        stage('Copy to remote server') {
+            steps {
+                sh """pwd
+                #scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /var/lib/jenkins/.ssh/common-key-mumbai.pem drupal.zip ubuntu@13.234.148.202:/tmp
+                #ls -lart /tmp
+                #ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /var/lib/jenkins/.ssh/common-key-mumbai.pem -t ubuntu@13.234.148.202 sudo sh /tmp/extract.sh
+                ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /var/lib/jenkins/.ssh/common-key-mumbai.pem -t ubuntu@13.234.148.202 sudo git pull
+                """
+            }
+        }
     }
 }
