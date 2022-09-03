@@ -14,7 +14,7 @@ pipeline {
         stage('Copy to remote server') {
             steps {
                 sh """pwd
-                curl --insecure --user ubuntu:{{password}} -T drupal.zip sftp://34.216.214.225/tmp/
+                scp -i /root/.ssh/common-key-mumbai.pem drupal.zip ubuntu@13.234.148.202:/tmp
                 """
             }
         }
