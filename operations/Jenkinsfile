@@ -3,7 +3,7 @@
 pipeline {
     agent any
     stages {
-        stage('Deploy Drupal to $(params.service_name)') {
+        stage("Deploy Drupal to ${params.service_name}") {
             steps {
                 script {
                     if (params.service_name == 'Production') {
