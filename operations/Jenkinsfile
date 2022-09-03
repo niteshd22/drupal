@@ -3,12 +3,23 @@
 pipeline {
     agent any
     stages {
-        stage('Updated Instance') {
+        stage('Deploy Drupal to $(params.service_name)') {
             steps {
-                sh """pwd
-                echo " The environment is ${params.Env}"
-                ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /var/lib/jenkins/.ssh/common-key-mumbai.pem -t ubuntu@13.234.148.202 sudo sh /tmp/extract.sh
-                """
+                script {
+                    if (params.service_name == 'Production') {
+                        sh """pwd
+                        ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /var/lib/jenkins/.ssh/common-key-mumbai.pem -t ubuntu@13.234.148.202 sudo sh /tmp/extract.sh
+                        """
+                    } else if (params.service_name == 'Staging') {
+						echo 'Deploying in Staging Env'
+                    } else if (params.service_name == 'Dev') {
+						echo 'Deploying in Dev Env'
+                    } else if (params.service_name == 'QA') {
+						echo 'Deploying in QA Env'
+                    }  else {
+						echo 'Service NA'
+					}
+                }
             }
         }
     }
