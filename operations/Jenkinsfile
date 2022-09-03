@@ -6,6 +6,7 @@ pipeline {
         stage('Configure Directories') {
             steps {
                 sh """pwd
+                whoami
                 ls -lart
                 zip -r drupal.zip /var/lib/jenkins/workspace/deployer -x '*.git*' -q
                 """
@@ -14,7 +15,7 @@ pipeline {
         stage('Copy to remote server') {
             steps {
                 sh """pwd
-                scp -i /root/.ssh/common-key-mumbai.pem drupal.zip ubuntu@13.234.148.202:/tmp
+                #scp -i /root/.ssh/common-key-mumbai.pem drupal.zip ubuntu@13.234.148.202:/tmp
                 """
             }
         }
